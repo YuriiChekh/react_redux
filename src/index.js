@@ -9,7 +9,8 @@ import {Provider} from "react-redux";
 const initialState ={
     counter: {
         value:0
-    }
+    },
+    posts:[]
 }
 
 const reducer  = (state = initialState, action) => {
@@ -35,6 +36,22 @@ const reducer  = (state = initialState, action) => {
             }
 
         }
+        case 'RES':{
+            return {
+                ...state,
+                counter:{
+                    value: state.counter.value = 0
+                }
+
+            }
+
+        }
+        case 'ADD_POSTS':{
+            return {
+                ...state,
+                posts:action.payload
+            }
+        }
         default:
             return state;
     }
@@ -43,9 +60,7 @@ const reducer  = (state = initialState, action) => {
 const store = createStore(reducer)
 
 
-const INCREMENT_ACTION = {
-    type:'INC'
-}
+
 
 ReactDOM.render(
   <React.StrictMode>
